@@ -19,12 +19,27 @@ class Product(models.Model):
     name = models.CharField(max_length=64, null=False, blank=False)
     price = models.DecimalField(max_digits=7, decimal_places=2)
 
-    # ? `upload_to` here refers to a firectory inside the project `ecommerce`
+    # ? `upload_to` here refers to a directory inside the project `ecommerce`
     # ? but outside of app `store`
     image = models.ImageField(upload_to="files/images")
 
     def __str__(self) -> str:
         return f"""Name: {self.name}
-    Price: {self.price}
-    Image: {self.image}
-    """
+        Price: {self.price}
+        Image: {self.image}
+        """
+
+
+class CartItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="products")
+    quantity = models.PositiveIntegerField()
+    price = models.DecimalField(max_digits=9, decimal_places=2, blank=True)
+
+    def save(self, *args, **kwargs):
+        self.price = self.quantity * self.product.price
+        super().save()
+
+
+# class Order(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="orders")
+#     items = models.ManyToManyField(CartItem, related_name="items", blank=True)
