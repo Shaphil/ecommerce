@@ -86,8 +86,10 @@ Control.ca-bundle
 Control.system-ca-bundle
 GitHub.sublime-settings
 
-# Visual Studio Code #
+# Editors and IDEs
 .vscode/
 .vscode/**
+.idea/
+.idea/**
 
 .history
