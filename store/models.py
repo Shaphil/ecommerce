@@ -19,8 +19,8 @@ class Product(models.Model):
     name = models.CharField(max_length=64, null=False, blank=False)
     price = models.DecimalField(max_digits=7, decimal_places=2)
 
-    # `upload_to` here refers to a firectory inside the project `ecommerce`
-    # but outside of app `store`
+    # ? `upload_to` here refers to a firectory inside the project `ecommerce`
+    # ? but outside of app `store`
     image = models.ImageField(upload_to="files/images")
 
     def __str__(self) -> str:

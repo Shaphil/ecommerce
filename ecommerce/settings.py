@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# `MEDIA_ROOT` is the absolute path to the directory containing media
+# ? `MEDIA_ROOT` is the absolute path to the directory containing media
 MEDIA_ROOT = 'C:\\MEGA\\Playground\\InterviewProjects\\PotentialAI\\ecommerce\\'
 MEDIA_URL = ''
 
