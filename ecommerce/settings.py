@@ -114,11 +114,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",
+# ]
 
 # ? `MEDIA_ROOT` is the absolute path to the directory containing media
 # TODO: Add dotenv to store these settings
 # MEDIA_ROOT = 'C:\\MEGA\\Playground\\InterviewProjects\\PotentialAI\\ecommerce\\'
-MEDIA_ROOT = '/home/mahmud/GitHub/shaphil/repos/ecommerce'
+MEDIA_ROOT = BASE_DIR
 MEDIA_URL = ''
 
 # Default primary key field type
