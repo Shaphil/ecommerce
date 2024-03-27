@@ -48,5 +48,8 @@ class Cart(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name_plural = 'Cart'
+
     def __str__(self):
         return f"User: {self.user.username} - Total: {self.total_price}"
