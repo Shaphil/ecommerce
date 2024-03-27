@@ -63,3 +63,15 @@ class Order(models.Model):
 
     def __str__(self):
         return f"Order: {self.cart.user.username}"
+
+
+class DailyData(models.Model):
+    revenue = models.DecimalField(max_digits=15, decimal_places=2, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Daily Data'
+
+    def __str__(self):
+        return f"Daily Data: {self.revenue}"
