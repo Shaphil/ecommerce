@@ -53,3 +53,13 @@ class Cart(models.Model):
 
     def __str__(self):
         return f"User: {self.user.username} - Total: {self.total_price}"
+
+
+class Order(models.Model):
+    cart = models.OneToOneField(Cart, on_delete=models.CASCADE, related_name="cartOrder")
+    is_created = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"Order: {self.cart.user.username}"
