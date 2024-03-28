@@ -79,7 +79,7 @@ class CartItemSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
-    cart = CartSerializer()
+    # cart = CartSerializer()
 
     class Meta:
         model = Order
