@@ -3,9 +3,20 @@ from store.models import Cart, CartItem, Product, Order, User
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
-        fields = ['url', 'username', 'email', ]
+        fields = ['url', 'username', 'email', 'password', ]
+
+    def create(self, validated_data):
+        _user = validated_data.pop('user')
+        user = User.objects.create_user(
+            username=_user['username'],
+            password=_user['password'],
+            email=_user['email']
+        )
+        return user
 
 
 class CartSerializer(serializers.HyperlinkedModelSerializer):
@@ -20,3 +31,9 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
         user = User.objects.create_user(username=_user['username'], email=_user['email'])
         cart = Cart.objects.create(user=user, **validated_data)
         return cart
+
+
+# class CartItemSerializer(serializers.HyperlinkedModelSerializer):
+#     class Meta:
+#         model = CartItem
+#         fields = '__all__'
