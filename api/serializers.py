@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from store.models import Cart, CartItem, Product, Order, User
+from store.models import Cart, CartItem, Product, Order, User, DailyData
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -33,7 +33,15 @@ class CartSerializer(serializers.HyperlinkedModelSerializer):
         return cart
 
 
-# class CartItemSerializer(serializers.HyperlinkedModelSerializer):
-#     class Meta:
-#         model = CartItem
-#         fields = '__all__'
+class ProductSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Product
+        fields = '__all__'
+
+
+class CartItemSerializer(serializers.HyperlinkedModelSerializer):
+    product = ProductSerializer()
+
+    class Meta:
+        model = CartItem
+        fields = '__all__'
