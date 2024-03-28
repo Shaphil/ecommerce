@@ -53,3 +53,9 @@ class OrderSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Order
         fields = '__all__'
+
+
+class DailyDataSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = DailyData
+        fields = '__all__'

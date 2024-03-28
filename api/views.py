@@ -1,6 +1,8 @@
 from rest_framework import permissions, viewsets
-from store.models import Cart, CartItem, Product, Order, User
-from api.serializers import CartSerializer, UserSerializer, CartItemSerializer, ProductSerializer, OrderSerializer
+
+from api.serializers import (CartSerializer, UserSerializer, CartItemSerializer,
+                             ProductSerializer, OrderSerializer, DailyDataSerializer)
+from store.models import Cart, CartItem, Product, Order, User, DailyData
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -30,4 +32,10 @@ class ProductViewSet(viewsets.ModelViewSet):
 class OrderViewSet(viewsets.ModelViewSet):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class DailyDataViewSet(viewsets.ModelViewSet):
+    queryset = DailyData.objects.all()
+    serializer_class = DailyDataSerializer
     permission_classes = [permissions.IsAuthenticated]
