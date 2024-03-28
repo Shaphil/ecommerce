@@ -45,3 +45,11 @@ class CartItemSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = CartItem
         fields = '__all__'
+
+
+class OrderSerializer(serializers.HyperlinkedModelSerializer):
+    cart = CartSerializer()
+
+    class Meta:
+        model = Order
+        fields = '__all__'
